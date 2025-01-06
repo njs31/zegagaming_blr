@@ -257,16 +257,14 @@
         font-family: "Exo 2", sans-serif;
       }
 
-      .time-slots,
-      .duration-slots {
+      .time-slots {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
         margin-bottom: 20px;
       }
 
-      .time-slot,
-      .duration-slot {
+      .time-slot {
         padding: 12px;
         background-color: transparent;
         border: 1px solid #3f3f46;
@@ -277,14 +275,12 @@
         transition: background-color 0.3s ease, border-color 0.3s ease;
       }
 
-      .time-slot:hover,
-      .duration-slot:hover {
+      .time-slot:hover {
         background-color: rgba(59, 130, 246, 0.1);
         border-color: #60a5fa;
       }
 
-      .time-slot.selected,
-      .duration-slot.selected {
+      .time-slot.selected {
         background-color: #3b82f6;
         border-color: #3b82f6;
       }
@@ -432,8 +428,7 @@
           flex-direction: column;
         }
 
-        .time-slots,
-        .duration-slots {
+        .time-slots {
           grid-template-columns: 1fr;
         }
       }
@@ -519,21 +514,22 @@
         <div class="form-group">
           <label>Available Time Slots</label>
           <div class="time-slots">
-            <button type="button" class="time-slot">10:00 AM</button>
-            <button type="button" class="time-slot">11:00 AM</button>
-            <button type="button" class="time-slot">12:00 PM</button>
-            <button type="button" class="time-slot">1:00 PM</button>
-            <button type="button" class="time-slot">2:00 PM</button>
-            <button type="button" class="time-slot">3:00 PM</button>
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Select Duration</label>
-          <div class="duration-slots">
-            <button type="button" class="duration-slot">1 Hour</button>
-            <button type="button" class="duration-slot">2 Hours</button>
-            <button type="button" class="duration-slot">3 Hours</button>
-            <button type="button" class="duration-slot">4 Hours</button>
+            <button type="button" class="time-slot">9:00 AM - 10:00 AM</button>
+            <button type="button" class="time-slot">10:00 AM - 11:00 AM</button>
+            <button type="button" class="time-slot">11:00 AM - 12:00 PM</button>
+            <button type="button" class="time-slot">12:00 PM - 1:00 PM</button>
+            <button type="button" class="time-slot">1:00 PM - 2:00 PM</button>
+            <button type="button" class="time-slot">2:00 PM - 3:00 PM</button>
+            <button type="button" class="time-slot">3:00 PM - 4:00 PM</button>
+            <button type="button" class="time-slot">4:00 PM - 5:00 PM</button>
+            <button type="button" class="time-slot">5:00 PM - 6:00 PM</button>
+            <button type="button" class="time-slot">6:00 PM - 7:00 PM</button>
+            <button type="button" class="time-slot">7:00 PM - 8:00 PM</button>
+            <button type="button" class="time-slot">8:00 PM - 9:00 PM</button>
+            <button type="button" class="time-slot">9:00 PM - 10:00 PM</button>
+            <button type="button" class="time-slot">10:00 PM - 11:00 PM</button>
+            <button type="button" class="time-slot">11:00 PM - 12:00 AM</button>
+            <button type="button" class="time-slot">12:00 AM - 1:00 AM</button>
           </div>
         </div>
         <div class="form-group">
@@ -600,20 +596,13 @@
     </section>
 
     <script>
-      // Time slot and duration selection
-      document
-        .querySelectorAll(".time-slot, .duration-slot")
-        .forEach((button) => {
-          button.addEventListener("click", function () {
-            // Remove selected class from siblings
-            const siblings = this.parentElement.children;
-            Array.from(siblings).forEach((sibling) => {
-              sibling.classList.remove("selected");
-            });
-            // Add selected class to clicked button
-            this.classList.add("selected");
-          });
+      // Time slot selection (multiple slots can be selected)
+      document.querySelectorAll(".time-slot").forEach((button) => {
+        button.addEventListener("click", function () {
+          // Toggle selected class on clicked button
+          this.classList.toggle("selected");
         });
+      });
 
       // Form submission
       document
@@ -623,30 +612,22 @@
 
           const station = document.getElementById("station").value;
           const date = document.getElementById("date").value;
-          const selectedTime = document.querySelector(
-            ".time-slot.selected"
-          )?.textContent;
-          const selectedDuration = document.querySelector(
-            ".duration-slot.selected"
-          )?.textContent;
+          const selectedSlots = Array.from(
+            document.querySelectorAll(".time-slot.selected")
+          ).map((slot) => slot.textContent);
           const name = document.getElementById("name").value;
           const phone = document.getElementById("phone").value;
 
-          if (
-            !station ||
-            !date ||
-            !selectedTime ||
-            !selectedDuration ||
-            !name ||
-            !phone
-          ) {
-            alert("Please fill in all fields");
+          if (!station || !date || selectedSlots.length === 0 || !name || !phone) {
+            alert("Please fill in all fields and select at least one time slot");
             return;
           }
 
           // Here you would typically send this data to a server
           alert(
-            `Booking confirmed!\n\nStation: ${station}\nDate: ${date}\nTime: ${selectedTime}\nDuration: ${selectedDuration}\nName: ${name}\nPhone: ${phone}`
+            `Booking confirmed!\n\nStation: ${station}\nDate: ${date}\nSelected Slots: ${selectedSlots.join(
+              ", "
+            )}\nName: ${name}\nPhone: ${phone}`
           );
           this.reset();
           document
