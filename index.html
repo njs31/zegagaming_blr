@@ -160,6 +160,56 @@
         margin-right: 8px;
       }
 
+      /* Monthly Pass Section */
+      .monthly-pass {
+        padding: 80px 20px;
+        background-color: rgba(24, 24, 27, 0.5);
+        text-align: center;
+      }
+
+      .monthly-pass h2 {
+        font-family: "Orbitron", sans-serif;
+        color: #3b82f6;
+        font-size: 36px;
+        margin-bottom: 24px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .monthly-pass p {
+        color: #94a3b8;
+        font-size: 18px;
+        margin-bottom: 24px;
+      }
+
+      .monthly-pass .highlight {
+        color: #3b82f6;
+        font-weight: 700;
+      }
+
+      /* Red Attractive Button */
+      .button-red {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: #ff4444;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background-color 0.2s, transform 0.2s;
+        font-family: "Exo 2", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .button-red:hover {
+        background-color: #cc0000;
+        transform: translateY(-2px);
+      }
+
       /* Booking form */
       .booking {
         padding: 80px 20px;
@@ -400,6 +450,7 @@
       <div class="button-group">
         <a href="#booking" class="button">Book Now</a>
         <a href="#contact" class="button button-outline">Contact Us</a>
+        <a href="#monthly-pass" class="button-red">Buy Monthly Pass</a>
       </div>
     </section>
 
@@ -428,6 +479,25 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- Monthly Pass Section -->
+    <section id="monthly-pass" class="monthly-pass">
+      <h2>Monthly Pass</h2>
+      <p>
+        Get unlimited access to our <span class="highlight">PC Gaming</span>
+        stations with our exclusive monthly pass!
+      </p>
+      <p>
+        <span class="highlight">₹2,250</span> for
+        <span class="highlight">30 hours</span> of gameplay, valid for
+        <span class="highlight">30 days</span> from the date of purchase.
+      </p>
+      <p>
+        <span class="highlight">Only 50 passes available</span> per month. Grab
+        yours before they run out!
+      </p>
+      <button class="button-red">Buy Monthly Pass</button>
     </section>
 
     <!-- Booking Form -->
