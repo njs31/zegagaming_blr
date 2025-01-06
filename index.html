@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gaming Center - Level Up Your Gaming Experience</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Exo+2:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Reset and base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #000;
+        color: #fff;
+        line-height: 1.5;
+        font-family: "Exo 2", sans-serif;
+        background-image: radial-gradient(
+            circle at 10% 20%,
+            rgba(59, 130, 246, 0.1) 0%,
+            transparent 20%
+          ),
+          radial-gradient(
+            circle at 90% 80%,
+            rgba(59, 130, 246, 0.1) 0%,
+            transparent 20%
+          );
+        background-attachment: fixed;
+      }
+
+      /* Hero section */
+      .hero {
+        padding: 80px 20px;
+        text-align: center;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .hero h1 {
+        font-family: "Orbitron", sans-serif;
+        font-size: 48px;
+        background: linear-gradient(to right, #60a5fa, #2563eb);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 24px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+      }
+
+      .hero p {
+        color: #94a3b8;
+        font-size: 20px;
+        margin-bottom: 32px;
+      }
+
+      /* Features section */
+      .features {
+        padding: 80px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 24px;
+      }
+
+      .feature-card {
+        background-color: rgba(24, 24, 27, 0.5);
+        border: 1px solid #27272a;
+        border-radius: 12px;
+        padding: 24px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+      }
+
+      .feature-card i {
+        color: #3b82f6;
+        font-size: 48px;
+        margin-bottom: 16px;
+      }
+
+      .feature-card h3 {
+        font-family: "Orbitron", sans-serif;
+        margin-bottom: 12px;
+        color: #60a5fa;
+      }
+
+      /* Gaming stations */
+      .stations {
+        background-color: rgba(24, 24, 27, 0.5);
+        padding: 80px 20px;
+      }
+
+      .stations-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .stations h2 {
+        font-family: "Orbitron", sans-serif;
+        color: #3b82f6;
+        font-size: 36px;
+        text-align: center;
+        margin-bottom: 48px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .station-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 24px;
+      }
+
+      .station-card {
+        background-color: #18181b;
+        border: 1px solid #27272a;
+        border-radius: 12px;
+        padding: 24px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .station-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+      }
+
+      .station-card h3 {
+        font-family: "Orbitron", sans-serif;
+        color: #60a5fa;
+        margin-bottom: 16px;
+      }
+
+      .station-card ul {
+        list-style: none;
+        margin: 16px 0;
+      }
+
+      .station-card li {
+        color: #94a3b8;
+        margin: 8px 0;
+        display: flex;
+        align-items: center;
+      }
+
+      .station-card li::before {
+        content: "✓";
+        color: #3b82f6;
+        margin-right: 8px;
+      }
+
+      /* Booking form */
+      .booking {
+        padding: 80px 20px;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .booking h2 {
+        font-family: "Orbitron", sans-serif;
+        color: #3b82f6;
+        font-size: 36px;
+        text-align: center;
+        margin-bottom: 48px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .booking-form {
+        background-color: #18181b;
+        border: 1px solid #27272a;
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #e2e8f0;
+        font-weight: 600;
+      }
+
+      .form-group select,
+      .form-group input {
+        width: 100%;
+        padding: 12px;
+        background-color: #27272a;
+        border: 1px solid #3f3f46;
+        border-radius: 6px;
+        color: #fff;
+        font-family: "Exo 2", sans-serif;
+      }
+
+      .time-slots,
+      .duration-slots {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .time-slot,
+      .duration-slot {
+        padding: 12px;
+        background-color: transparent;
+        border: 1px solid #3f3f46;
+        border-radius: 6px;
+        color: #fff;
+        cursor: pointer;
+        font-family: "Exo 2", sans-serif;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+      }
+
+      .time-slot:hover,
+      .duration-slot:hover {
+        background-color: rgba(59, 130, 246, 0.1);
+        border-color: #60a5fa;
+      }
+
+      .time-slot.selected,
+      .duration-slot.selected {
+        background-color: #3b82f6;
+        border-color: #3b82f6;
+      }
+
+      /* Tournaments */
+      .tournaments {
+        padding: 80px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .tournaments h2 {
+        font-family: "Orbitron", sans-serif;
+        color: #3b82f6;
+        font-size: 36px;
+        text-align: center;
+        margin-bottom: 48px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .tournament-card {
+        background-color: #18181b;
+        border: 1px solid #27272a;
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 24px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .tournament-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+      }
+
+      .tournament-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+      }
+
+      .tournament-header h3 {
+        font-family: "Orbitron", sans-serif;
+        color: #60a5fa;
+      }
+
+      .tournament-badge {
+        background-color: #3b82f6;
+        color: #fff;
+        padding: 4px 12px;
+        border-radius: 9999px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .tournament-info {
+        color: #94a3b8;
+        margin-bottom: 8px;
+      }
+
+      /* Contact Section */
+      .contact {
+        padding: 80px 20px;
+        background-color: rgba(24, 24, 27, 0.5);
+        text-align: center;
+      }
+
+      .contact h2 {
+        font-family: "Orbitron", sans-serif;
+        color: #3b82f6;
+        font-size: 36px;
+        margin-bottom: 24px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .contact p {
+        color: #94a3b8;
+        font-size: 18px;
+        margin-bottom: 24px;
+      }
+
+      .contact a {
+        color: #3b82f6;
+        text-decoration: none;
+        margin: 0 12px;
+        transition: color 0.3s ease;
+      }
+
+      .contact a:hover {
+        color: #60a5fa;
+      }
+
+      /* Buttons */
+      .button {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: #3b82f6;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background-color 0.2s, transform 0.2s;
+        font-family: "Exo 2", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .button:hover {
+        background-color: #2563eb;
+        transform: translateY(-2px);
+      }
+
+      .button-outline {
+        background-color: transparent;
+        border: 2px solid #3b82f6;
+        color: #3b82f6;
+      }
+
+      .button-outline:hover {
+        background-color: rgba(59, 130, 246, 0.1);
+      }
+
+      .button-group {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+      }
+
+      /* Responsive design */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 36px;
+        }
+
+        .hero p {
+          font-size: 18px;
+        }
+
+        .button-group {
+          flex-direction: column;
+        }
+
+        .time-slots,
+        .duration-slots {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Elevate Your Gaming Experience</h1>
+      <p>
+        Top-tier gaming stations featuring high-performance PCs and PS5
+        consoles, right in the heart of Bangalore!
+      </p>
+      <div class="button-group">
+        <a href="#booking" class="button">Book Now</a>
+        <a href="#contact" class="button button-outline">Contact Us</a>
+      </div>
+    </section>
+
+    <!-- Gaming Stations -->
+    <section class="stations">
+      <div class="stations-container">
+        <h2>Gaming Stations</h2>
+        <div class="station-cards">
+          <div class="station-card">
+            <h3>PC Gaming</h3>
+            <ul>
+              <li>RTX 4060 GPU</li>
+              <li>180Hz Gaming Monitor</li>
+              <li>Pro Gaming Peripherals</li>
+            </ul>
+            <button class="button">Rs 100</button>
+          </div>
+          <div class="station-card">
+            <h3>PS5 Gaming</h3>
+            <ul>
+              <li>4K HDR Display</li>
+              <li>Latest PS5 Games</li>
+              <li>Comfortable Gaming Couch</li>
+            </ul>
+            <button class="button">Rs 145</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Form -->
+    <section id="booking" class="booking">
+      <h2>Book Your Gaming Session</h2>
+      <form class="booking-form">
+        <div class="form-group">
+          <label for="station">Select Gaming Station</label>
+          <select id="station" required>
+            <option value="">Choose a station</option>
+            <option value="pc">PC Gaming</option>
+            <option value="ps5">PS5 Gaming</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="date">Select Date</label>
+          <input type="date" id="date" required />
+        </div>
+        <div class="form-group">
+          <label>Available Time Slots</label>
+          <div class="time-slots">
+            <button type="button" class="time-slot">10:00 AM</button>
+            <button type="button" class="time-slot">11:00 AM</button>
+            <button type="button" class="time-slot">12:00 PM</button>
+            <button type="button" class="time-slot">1:00 PM</button>
+            <button type="button" class="time-slot">2:00 PM</button>
+            <button type="button" class="time-slot">3:00 PM</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Select Duration</label>
+          <div class="duration-slots">
+            <button type="button" class="duration-slot">1 Hour</button>
+            <button type="button" class="duration-slot">2 Hours</button>
+            <button type="button" class="duration-slot">3 Hours</button>
+            <button type="button" class="duration-slot">4 Hours</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Enter your name" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input
+            type="tel"
+            id="phone"
+            placeholder="Enter your phone number"
+            required
+          />
+        </div>
+        <button type="submit" class="button">Confirm Booking</button>
+      </form>
+    </section>
+
+    <!-- Tournaments -->
+    <section class="tournaments">
+      <h2>Tournaments & Events</h2>
+      <div class="tournament-card">
+        <div class="tournament-header">
+          <h3>FIFA 24 Tournament</h3>
+          <span class="tournament-badge">UPCOMING</span>
+        </div>
+        <p class="tournament-info">📅 Saturday, March 30, 2024</p>
+        <p class="tournament-info">⏰ 2:00 PM Onwards</p>
+        <p class="tournament-info">🏆 Prize Pool: ₹10,000</p>
+        <button class="button">Register Now</button>
+      </div>
+      <div class="tournament-card">
+        <div class="tournament-header">
+          <h3>Valorant Championship</h3>
+          <span class="tournament-badge">UPCOMING</span>
+        </div>
+        <p class="tournament-info">📅 Sunday, March 31, 2024</p>
+        <p class="tournament-info">⏰ 3:00 PM Onwards</p>
+        <p class="tournament-info">🏆 Prize Pool: ₹25,000</p>
+        <button class="button">Register Now</button>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <h2>Contact Us</h2>
+      <p>
+        First Floor, #1204, Aravinda Nethre, 16th Main Rd, Mahadeshwara Nagar,
+        BTM 2nd Stage, BTM Layout, Bengaluru, Karnataka 560076
+      </p>
+      <p>Contact: 9380738842</p>
+      <p>
+        <a
+          href="https://www.google.com/maps/place/Zega+Gaming/@12.9119965,77.6099257,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae15ff1054fb99:0x79c5cc15be34482e!8m2!3d12.9119965!4d77.6099257!16s%2Fg%2F11wvc70wzy?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D"
+          target="_blank"
+          >📍 Google Maps</a
+        >
+        |
+        <a href="https://www.instagram.com/zegagaming_blr/" target="_blank"
+          >📸 Instagram</a
+        >
+      </p>
+    </section>
+
+    <script>
+      // Time slot and duration selection
+      document
+        .querySelectorAll(".time-slot, .duration-slot")
+        .forEach((button) => {
+          button.addEventListener("click", function () {
+            // Remove selected class from siblings
+            const siblings = this.parentElement.children;
+            Array.from(siblings).forEach((sibling) => {
+              sibling.classList.remove("selected");
+            });
+            // Add selected class to clicked button
+            this.classList.add("selected");
+          });
+        });
+
+      // Form submission
+      document
+        .querySelector(".booking-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const station = document.getElementById("station").value;
+          const date = document.getElementById("date").value;
+          const selectedTime = document.querySelector(
+            ".time-slot.selected"
+          )?.textContent;
+          const selectedDuration = document.querySelector(
+            ".duration-slot.selected"
+          )?.textContent;
+          const name = document.getElementById("name").value;
+          const phone = document.getElementById("phone").value;
+
+          if (
+            !station ||
+            !date ||
+            !selectedTime ||
+            !selectedDuration ||
+            !name ||
+            !phone
+          ) {
+            alert("Please fill in all fields");
+            return;
+          }
+
+          // Here you would typically send this data to a server
+          alert(
+            `Booking confirmed!\n\nStation: ${station}\nDate: ${date}\nTime: ${selectedTime}\nDuration: ${selectedDuration}\nName: ${name}\nPhone: ${phone}`
+          );
+          this.reset();
+          document
+            .querySelectorAll(".selected")
+            .forEach((el) => el.classList.remove("selected"));
+        });
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const element = document.querySelector(this.getAttribute("href"));
+          element.scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
