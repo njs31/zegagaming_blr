@@ -32,6 +32,9 @@
             transparent 20%
           );
         background-attachment: fixed;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
       /* Hero section */
@@ -61,103 +64,122 @@
         margin-bottom: 32px;
       }
 
-      /* Features section */
-      .features {
-        padding: 80px 20px;
+      /* Pricing section */
+      .pricing-container {
         max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 24px;
-      }
-
-      .feature-card {
-        background-color: rgba(24, 24, 27, 0.5);
-        border: 1px solid #27272a;
-        border-radius: 12px;
-        padding: 24px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .feature-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
-      }
-
-      .feature-card i {
-        color: #3b82f6;
-        font-size: 48px;
-        margin-bottom: 16px;
-      }
-
-      .feature-card h3 {
-        font-family: "Orbitron", sans-serif;
-        margin-bottom: 12px;
-        color: #60a5fa;
-      }
-
-      /* Gaming stations */
-      .stations {
-        background-color: rgba(24, 24, 27, 0.5);
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
         padding: 80px 20px;
       }
 
-      .stations-container {
-        max-width: 1200px;
+      .pricing-card {
+        background-color: transparent;
+        border: 2px solid #0088ff;
+        border-radius: 25px;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        max-width: 800px;
         margin: 0 auto;
       }
 
-      .stations h2 {
-        font-family: "Orbitron", sans-serif;
-        color: #3b82f6;
-        font-size: 36px;
+      .card-header {
+        background-color: #0088ff;
+        color: white;
         text-align: center;
-        margin-bottom: 48px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
+        padding: 15px;
+        font-size: 1.5rem;
+        border-radius: 20px;
+        margin: -2px;
       }
 
-      .station-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 24px;
+      .card-content {
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
       }
 
-      .station-card {
-        background-color: #18181b;
-        border: 1px solid #27272a;
-        border-radius: 12px;
-        padding: 24px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      .specs {
+        flex: 1;
+        padding-right: 20px;
       }
 
-      .station-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
-      }
-
-      .station-card h3 {
-        font-family: "Orbitron", sans-serif;
-        color: #60a5fa;
-        margin-bottom: 16px;
-      }
-
-      .station-card ul {
+      .specs ul {
         list-style: none;
-        margin: 16px 0;
       }
 
-      .station-card li {
-        color: #94a3b8;
-        margin: 8px 0;
+      .specs li {
+        margin-bottom: 15px;
         display: flex;
         align-items: center;
       }
 
-      .station-card li::before {
-        content: "✓";
-        color: #3b82f6;
-        margin-right: 8px;
+      .specs li::before {
+        content: "•";
+        color: #0088ff;
+        margin-right: 10px;
+      }
+
+      .pricing {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .pricing-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+      }
+
+      .pricing-table th {
+        color: #0088ff;
+        padding: 10px;
+        font-weight: normal;
+      }
+
+      .pricing-table td {
+        padding: 10px;
+      }
+
+      .original-price {
+        text-decoration: line-through;
+        color: #666;
+        font-size: 0.9em;
+        margin-left: 5px;
+      }
+
+      .happy-hours {
+        text-align: center;
+        color: #ffd700;
+        margin-top: 20px;
+        font-size: 0.9em;
+      }
+
+      .title {
+        font-size: 2rem;
+        text-align: center;
+        color: #0088ff;
+        margin-bottom: 40px;
+      }
+
+      @media (max-width: 768px) {
+        .card-content {
+          flex-direction: column;
+        }
+
+        .specs {
+          padding-right: 0;
+          margin-bottom: 20px;
+        }
+
+        .title {
+          font-size: 1.5rem;
+        }
       }
 
       /* Monthly Pass Section */
@@ -165,6 +187,7 @@
         padding: 80px 20px;
         background-color: rgba(24, 24, 27, 0.5);
         text-align: center;
+        margin-top: 2vh;
       }
 
       .monthly-pass h2 {
@@ -215,6 +238,7 @@
         padding: 80px 20px;
         max-width: 600px;
         margin: 0 auto;
+        text-align: center; /* Center the button */
       }
 
       .booking h2 {
@@ -257,122 +281,77 @@
         font-family: "Exo 2", sans-serif;
       }
 
-      .time-slots {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+      .time-range {
+        display: flex;
         gap: 12px;
         margin-bottom: 20px;
       }
 
-      .time-slot {
-        padding: 12px;
-        background-color: transparent;
-        border: 1px solid #3f3f46;
-        border-radius: 6px;
-        color: #fff;
-        cursor: pointer;
-        font-family: "Exo 2", sans-serif;
-        transition: background-color 0.3s ease, border-color 0.3s ease;
+      .time-range input {
+        flex: 1;
       }
 
-      .time-slot:hover {
-        background-color: rgba(59, 130, 246, 0.1);
-        border-color: #60a5fa;
-      }
-
-      .time-slot.selected {
-        background-color: #3b82f6;
-        border-color: #3b82f6;
-      }
-
-      /* Tournaments */
-      .tournaments {
-        padding: 80px 20px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .tournaments h2 {
-        font-family: "Orbitron", sans-serif;
-        color: #3b82f6;
-        font-size: 36px;
-        text-align: center;
-        margin-bottom: 48px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-      }
-
-      .tournament-card {
+      /* Popup styles */
+      .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         background-color: #18181b;
         border: 1px solid #27272a;
         border-radius: 12px;
         padding: 24px;
-        margin-bottom: 24px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        width: 90%;
+        max-width: 600px;
+        max-height: 80vh;
+        overflow-y: auto;
       }
 
-      .tournament-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
-      }
-
-      .tournament-header {
+      .popup-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 24px;
+        margin-bottom: 20px;
       }
 
-      .tournament-header h3 {
+      .popup-header h3 {
         font-family: "Orbitron", sans-serif;
         color: #60a5fa;
       }
 
-      .tournament-badge {
-        background-color: #3b82f6;
+      .popup-close {
+        background: none;
+        border: none;
         color: #fff;
-        padding: 4px 12px;
-        border-radius: 9999px;
-        font-size: 14px;
-        font-weight: 600;
+        font-size: 24px;
+        cursor: pointer;
       }
 
-      .tournament-info {
+      .popup-content {
         color: #94a3b8;
-        margin-bottom: 8px;
       }
 
-      /* Contact Section */
-      .contact {
-        padding: 80px 20px;
-        background-color: rgba(24, 24, 27, 0.5);
-        text-align: center;
+      .popup-content ul {
+        list-style: none;
+        padding: 0;
       }
 
-      .contact h2 {
-        font-family: "Orbitron", sans-serif;
-        color: #3b82f6;
-        font-size: 36px;
-        margin-bottom: 24px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
+      .popup-content li {
+        margin-bottom: 10px;
       }
 
-      .contact p {
-        color: #94a3b8;
-        font-size: 18px;
-        margin-bottom: 24px;
-      }
-
-      .contact a {
-        color: #3b82f6;
-        text-decoration: none;
-        margin: 0 12px;
-        transition: color 0.3s ease;
-      }
-
-      .contact a:hover {
-        color: #60a5fa;
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 999;
       }
 
       /* Buttons */
@@ -414,6 +393,93 @@
         justify-content: center;
       }
 
+      /* Tournaments Section */
+      .tournaments {
+        padding: 80px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .tournaments h2 {
+        font-family: "Orbitron", sans-serif;
+        color: #3b82f6;
+        font-size: 36px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 48px;
+      }
+
+      .tournament-card {
+        background-color: #18181b;
+        border: 1px solid #27272a;
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 24px;
+        text-align: left;
+        position: relative; /* Added for positioning the badge */
+      }
+
+      .tournament-card h3 {
+        font-family: "Orbitron", sans-serif;
+        color: #60a5fa;
+        margin-bottom: 16px;
+      }
+
+      .tournament-info {
+        color: #94a3b8;
+        margin-bottom: 16px;
+      }
+
+      .tournament-info p {
+        margin-bottom: 8px;
+      }
+
+      .tournament-badge {
+        background-color: #3b82f6;
+        color: #fff;
+        padding: 4px 12px;
+        border-radius: 9999px;
+        font-size: 14px;
+        font-weight: 600;
+        position: absolute; /* Position the badge */
+        top: 20px; /* Adjust top position */
+        right: 20px; /* Adjust right position */
+      }
+
+      /* Contact Section */
+      .contact {
+        padding: 80px 20px;
+        background-color: rgba(24, 24, 27, 0.5);
+        text-align: center;
+      }
+
+      .contact h2 {
+        font-family: "Orbitron", sans-serif;
+        color: #3b82f6;
+        font-size: 36px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 24px;
+      }
+
+      .contact p {
+        color: #94a3b8;
+        font-size: 18px;
+        margin-bottom: 16px;
+      }
+
+      .contact a {
+        color: #3b82f6;
+        text-decoration: none;
+        margin: 0 12px;
+        transition: color 0.3s ease;
+      }
+
+      .contact a:hover {
+        color: #60a5fa;
+      }
+
       /* Responsive design */
       @media (max-width: 768px) {
         .hero h1 {
@@ -428,8 +494,13 @@
           flex-direction: column;
         }
 
-        .time-slots {
-          grid-template-columns: 1fr;
+        .time-range {
+          flex-direction: column;
+        }
+
+        .popup {
+          width: 95%;
+          max-height: 90vh;
         }
       }
     </style>
@@ -449,32 +520,104 @@
       </div>
     </section>
 
-    <!-- Gaming Stations -->
-    <section class="stations">
-      <div class="stations-container">
-        <h2>Gaming Stations</h2>
-        <div class="station-cards">
-          <div class="station-card">
-            <h3>PC Gaming</h3>
+    <!-- Pricing Section -->
+    <h1 class="title">GAME ZONE</h1>
+    <div class="pricing-container">
+      <!-- PC Gaming Card -->
+      <div class="pricing-card">
+        <div class="card-header">PC GAMING</div>
+        <div class="card-content">
+          <div class="specs">
             <ul>
-              <li>RTX 4060 GPU</li>
-              <li>180Hz Gaming Monitor</li>
-              <li>Pro Gaming Peripherals</li>
+              <li>GPU: RTX 4060</li>
+              <li>Processor: AMD Ryzen 5</li>
+              <li>RAM: 16 GB DDR5</li>
+              <li>Monitor: 27" 180Hz 1ms HDR10 Display</li>
+              <li>Ergonomic Gaming Chairs</li>
+              <li>30 mins Add-on: Rs. 45</li>
             </ul>
-            <button class="button">Rs 100</button>
           </div>
-          <div class="station-card">
-            <h3>PS5 Gaming</h3>
+          <div class="pricing">
+            <table class="pricing-table">
+              <thead>
+                <tr>
+                  <th>Hours</th>
+                  <th>Price</th>
+                  <th>Per Hour</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>95</td>
+                  <td>95</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>270 <span class="original-price">285</span></td>
+                  <td>90</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>425 <span class="original-price">475</span></td>
+                  <td>85</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="happy-hours">
+          Happy Hours Price: Rs. 85/hour [8AM - 4PM]
+        </div>
+      </div>
+
+      <!-- PS5 Card -->
+      <div class="pricing-card">
+        <div class="card-header">PS5</div>
+        <div class="card-content">
+          <div class="specs">
             <ul>
-              <li>4K HDR Display</li>
-              <li>Latest PS5 Games</li>
-              <li>Comfortable Gaming Couch</li>
+              <li>55" QLED 120Hz MEMC Display</li>
+              <li>Pricing Validity: 1 Hour</li>
+              <li>Extra Controller: Rs. 45/hour</li>
             </ul>
-            <button class="button">Rs 145</button>
+          </div>
+          <div class="pricing">
+            <table class="pricing-table">
+              <thead>
+                <tr>
+                  <th>Controllers</th>
+                  <th>Price</th>
+                  <th>Per Person</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>145</td>
+                  <td>145</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>190</td>
+                  <td>95</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>235</td>
+                  <td>78</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>280</td>
+                  <td>70</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
     <!-- Monthly Pass Section -->
     <section id="monthly-pass" class="monthly-pass">
@@ -498,6 +641,9 @@
     <!-- Booking Form -->
     <section id="booking" class="booking">
       <h2>Book Your Gaming Session</h2>
+      <button id="explore-games" class="button">
+        Explore Games in our PCs and PS5s
+      </button>
       <form class="booking-form">
         <div class="form-group">
           <label for="station">Select Gaming Station</label>
@@ -512,24 +658,10 @@
           <input type="date" id="date" required />
         </div>
         <div class="form-group">
-          <label>Available Time Slots</label>
-          <div class="time-slots">
-            <button type="button" class="time-slot">9:00 AM - 10:00 AM</button>
-            <button type="button" class="time-slot">10:00 AM - 11:00 AM</button>
-            <button type="button" class="time-slot">11:00 AM - 12:00 PM</button>
-            <button type="button" class="time-slot">12:00 PM - 1:00 PM</button>
-            <button type="button" class="time-slot">1:00 PM - 2:00 PM</button>
-            <button type="button" class="time-slot">2:00 PM - 3:00 PM</button>
-            <button type="button" class="time-slot">3:00 PM - 4:00 PM</button>
-            <button type="button" class="time-slot">4:00 PM - 5:00 PM</button>
-            <button type="button" class="time-slot">5:00 PM - 6:00 PM</button>
-            <button type="button" class="time-slot">6:00 PM - 7:00 PM</button>
-            <button type="button" class="time-slot">7:00 PM - 8:00 PM</button>
-            <button type="button" class="time-slot">8:00 PM - 9:00 PM</button>
-            <button type="button" class="time-slot">9:00 PM - 10:00 PM</button>
-            <button type="button" class="time-slot">10:00 PM - 11:00 PM</button>
-            <button type="button" class="time-slot">11:00 PM - 12:00 AM</button>
-            <button type="button" class="time-slot">12:00 AM - 1:00 AM</button>
+          <label>Select Time Range</label>
+          <div class="time-range">
+            <input type="time" id="from-time" required />
+            <input type="time" id="to-time" required />
           </div>
         </div>
         <div class="form-group">
@@ -549,34 +681,66 @@
       </form>
     </section>
 
-    <!-- Tournaments -->
+    <!-- Popup for Games -->
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="games-popup">
+      <div class="popup-header">
+        <h3>Games Available</h3>
+        <button class="popup-close" id="close-popup">&times;</button>
+      </div>
+      <div class="popup-content">
+        <h4>PCs</h4>
+        <ul>
+          <li>✅PC1: Valorant, Dota 2, Counter Strike 2, PUBG, COD Warzone</li>
+          <li>✅PC2: Valorant, Dota 2, Counter Strike 2, PUBG, COD Warzone</li>
+          <li>✅PC3: Valorant, Dota 2, Counter Strike 2, PUBG, COD Warzone</li>
+          <li>✅PC4: Valorant, Dota 2, Counter Strike 2, PUBG, COD Warzone</li>
+          <li>✅PC5: Valorant, Dota 2, Counter Strike 2, PUBG, COD Warzone</li>
+          <li>✅PC6: Valorant, Dota 2, Counter Strike 2, PUBG, COD Warzone</li>
+          <li>✅PC7: Valorant, Dota 2, Counter Strike 2, PUBG, COD Warzone</li>
+          <li>✅PC8: Valorant, Dota 2, Counter Strike 2, PUBG, COD Warzone</li>
+          <li>✅PC9: Valorant, Dota 2, Counter Strike 2, PUBG, COD Warzone</li>
+          <li>✅PC10: Valorant, Dota 2, Counter Strike 2, PUBG, COD Warzone</li>
+        </ul>
+        <h4>PS5s</h4>
+        <ul>
+          <li>✅PS5-1: FC 25</li>
+          <li>✅PS5-2: FC 25</li>
+          <li>
+            Other games (discs): UFC5, Gran Turismo, God of War, Last of Us 1
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Tournaments Section -->
     <section class="tournaments">
-      <h2>Tournaments & Events</h2>
+      <h2>TOURNAMENTS & EVENTS</h2>
       <div class="tournament-card">
-        <div class="tournament-header">
-          <h3>FIFA 24 Tournament</h3>
-          <span class="tournament-badge">UPCOMING</span>
+        <span class="tournament-badge">UPCOMING</span>
+        <h3>FIFA 24 Tournament</h3>
+        <div class="tournament-info">
+          <p>📅 Saturday, March 30, 2024</p>
+          <p>⏰ 2:00 PM Onwards</p>
+          <p>🏆 Prize Pool: ₹10,000</p>
         </div>
-        <p class="tournament-info">📅 Saturday, March 30, 2024</p>
-        <p class="tournament-info">⏰ 2:00 PM Onwards</p>
-        <p class="tournament-info">🏆 Prize Pool: ₹10,000</p>
-        <button class="button">Register Now</button>
+        <button class="button">REGISTER NOW</button>
       </div>
       <div class="tournament-card">
-        <div class="tournament-header">
-          <h3>Valorant Championship</h3>
-          <span class="tournament-badge">UPCOMING</span>
+        <span class="tournament-badge">UPCOMING</span>
+        <h3>Valorant Championship</h3>
+        <div class="tournament-info">
+          <p>📅 Sunday, March 31, 2024</p>
+          <p>⏰ 3:00 PM Onwards</p>
+          <p>🏆 Prize Pool: ₹25,000</p>
         </div>
-        <p class="tournament-info">📅 Sunday, March 31, 2024</p>
-        <p class="tournament-info">⏰ 3:00 PM Onwards</p>
-        <p class="tournament-info">🏆 Prize Pool: ₹25,000</p>
-        <button class="button">Register Now</button>
+        <button class="button">REGISTER NOW</button>
       </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-      <h2>Contact Us</h2>
+      <h2>CONTACT US</h2>
       <p>
         First Floor, #1204, Aravinda Nethre, 16th Main Rd, Mahadeshwara Nagar,
         BTM 2nd Stage, BTM Layout, Bengaluru, Karnataka 560076
@@ -596,14 +760,6 @@
     </section>
 
     <script>
-      // Time slot selection (multiple slots can be selected)
-      document.querySelectorAll(".time-slot").forEach((button) => {
-        button.addEventListener("click", function () {
-          // Toggle selected class on clicked button
-          this.classList.toggle("selected");
-        });
-      });
-
       // Form submission
       document
         .querySelector(".booking-form")
@@ -612,27 +768,21 @@
 
           const station = document.getElementById("station").value;
           const date = document.getElementById("date").value;
-          const selectedSlots = Array.from(
-            document.querySelectorAll(".time-slot.selected")
-          ).map((slot) => slot.textContent);
+          const fromTime = document.getElementById("from-time").value;
+          const toTime = document.getElementById("to-time").value;
           const name = document.getElementById("name").value;
           const phone = document.getElementById("phone").value;
 
-          if (!station || !date || selectedSlots.length === 0 || !name || !phone) {
-            alert("Please fill in all fields and select at least one time slot");
+          if (!station || !date || !fromTime || !toTime || !name || !phone) {
+            alert("Please fill in all fields");
             return;
           }
 
           // Here you would typically send this data to a server
           alert(
-            `Booking confirmed!\n\nStation: ${station}\nDate: ${date}\nSelected Slots: ${selectedSlots.join(
-              ", "
-            )}\nName: ${name}\nPhone: ${phone}`
+            `Booking confirmed!\n\nStation: ${station}\nDate: ${date}\nTime Range: ${fromTime} - ${toTime}\nName: ${name}\nPhone: ${phone}`
           );
           this.reset();
-          document
-            .querySelectorAll(".selected")
-            .forEach((el) => el.classList.remove("selected"));
         });
 
       // Smooth scroll for anchor links
@@ -644,6 +794,27 @@
             behavior: "smooth",
           });
         });
+      });
+
+      // Popup functionality
+      const exploreGamesButton = document.getElementById("explore-games");
+      const gamesPopup = document.getElementById("games-popup");
+      const overlay = document.getElementById("overlay");
+      const closePopupButton = document.getElementById("close-popup");
+
+      exploreGamesButton.addEventListener("click", () => {
+        gamesPopup.style.display = "block";
+        overlay.style.display = "block";
+      });
+
+      closePopupButton.addEventListener("click", () => {
+        gamesPopup.style.display = "none";
+        overlay.style.display = "none";
+      });
+
+      overlay.addEventListener("click", () => {
+        gamesPopup.style.display = "none";
+        overlay.style.display = "none";
       });
     </script>
   </body>
