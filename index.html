@@ -671,9 +671,9 @@
             <table class="pricing-table">
               <thead>
                 <tr>
-                  <th>Controllers</th>
+                  <th>Hours</th>
                   <th>Price</th>
-                  <th>Per Person</th>
+                  <th>Per Hour</th>
                 </tr>
               </thead>
               <tbody>
@@ -684,18 +684,18 @@
                 </tr>
                 <tr>
                   <td>2</td>
-                  <td>190</td>
-                  <td>95</td>
+                  <td>290</td>
+                  <td>145</td>
                 </tr>
                 <tr>
                   <td>3</td>
-                  <td>235</td>
-                  <td>78</td>
+                  <td>435</td>
+                  <td>145</td>
                 </tr>
                 <tr>
                   <td>4</td>
-                  <td>280</td>
-                  <td>70</td>
+                  <td>580</td>
+                  <td>145</td>
                 </tr>
               </tbody>
             </table>
@@ -742,7 +742,7 @@
           <select id="station" required>
             <option value="">Choose a station</option>
             <option value="pc">PC Gaming</option>
-            <option value="ps5">PS5 Gaming</option>
+            <option value="ps5">PS5 Gaming (with 1 controller)</option>
           </select>
         </div>
         <div class="form-group">
@@ -869,7 +869,25 @@
     </section>
 
     <!-- Contact Section -->
-  
+    <section id="contact" class="contact">
+      <h2>CONTACT US</h2>
+      <p>
+        First Floor, #1204, Aravinda Nethre, 16th Main Rd, Mahadeshwara Nagar,
+        BTM 2nd Stage, BTM Layout, Bengaluru, Karnataka 560076
+      </p>
+      <p>Contact: 9380738842</p>
+      <p>
+        <a
+          href="https://www.google.com/maps/place/Zega+Gaming/@12.9119965,77.6099257,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae15ff1054fb99:0x79c5cc15be34482e!8m2!3d12.9119965!4d77.6099257!16s%2Fg%2F11wvc70wzy?entry=ttu&g_ep=EgoyMDI1MDEwMS4wIKXMDSoASAFQAw%3D%3D"
+          target="_blank"
+          >📍 Google Maps</a
+        >
+        |
+        <a href="https://www.instagram.com/zegagaming_blr/" target="_blank"
+          >📸 Instagram</a
+        >
+      </p>
+    </section>
 
     <script>
       // Form submission
@@ -936,13 +954,19 @@
             normalHours = (to - happyHourEnd) / (1000 * 60 * 60);
           }
 
+          // Apply discounts for 3-hour and 5-hour slots after 4 PM
+          if (from >= happyHourEnd) {
+            if (duration === 3) {
+              return 90 * duration; // Rs 90 per hour for 3-hour slots
+            } else if (duration === 5) {
+              return 85 * duration; // Rs 85 per hour for 5-hour slots
+            }
+          }
+
           const totalCost = happyHours * 85 + normalHours * 95;
           return totalCost;
         } else if (station === "ps5") {
-          if (duration === 1) return 145;
-          if (duration === 2) return 190;
-          if (duration === 3) return 235;
-          if (duration === 4) return 280;
+          return 145 * duration; // Rs 145 per hour for PS5
         }
         return 0;
       }
