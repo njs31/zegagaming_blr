@@ -937,13 +937,27 @@
           const happyHourStart = new Date(`1970-01-01T08:00:00`);
           const happyHourEnd = new Date(`1970-01-01T16:00:00`);
 
+          // Check if the entire slot is within Happy Hours
+          if (from >= happyHourStart && to <= happyHourEnd) {
+            return 85 * duration; // Rs. 85/hour for Happy Hours
+          }
+
+          // Check if the slot is entirely after Happy Hours
+          if (from >= happyHourEnd) {
+            if (duration === 3) {
+              return 90 * duration; // Rs. 90/hour for 3-hour slots after 4 PM
+            } else if (duration === 5) {
+              return 85 * duration; // Rs. 85/hour for 5-hour slots after 4 PM
+            } else {
+              return 95 * duration; // Rs. 95/hour for Normal Hours
+            }
+          }
+
+          // If the slot spans both Happy Hours and Normal Hours
           let happyHours = 0;
           let normalHours = 0;
 
-          // Calculate hours in happy hours and normal hours
-          if (from >= happyHourStart && to <= happyHourEnd) {
-            happyHours = duration;
-          } else if (from < happyHourStart && to > happyHourEnd) {
+          if (from < happyHourStart && to > happyHourEnd) {
             happyHours = (happyHourEnd - happyHourStart) / (1000 * 60 * 60);
             normalHours = duration - happyHours;
           } else if (from < happyHourStart && to <= happyHourEnd) {
@@ -954,23 +968,13 @@
             normalHours = (to - happyHourEnd) / (1000 * 60 * 60);
           }
 
-          // Apply discounts for 3-hour and 5-hour slots after 4 PM
-          if (from >= happyHourEnd) {
-            if (duration === 3) {
-              return 90 * duration; // Rs 90 per hour for 3-hour slots
-            } else if (duration === 5) {
-              return 85 * duration; // Rs 85 per hour for 5-hour slots
-            }
-          }
-
           const totalCost = happyHours * 85 + normalHours * 95;
           return totalCost;
         } else if (station === "ps5") {
-          return 145 * duration; // Rs 145 per hour for PS5
+          return 145 * duration; // Rs. 145/hour for PS5
         }
         return 0;
       }
-
       // Initiate Razorpay payment
       function initiatePayment(amount) {
         const options = {
