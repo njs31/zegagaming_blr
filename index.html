@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gaming Center - Level Up Your Gaming Experience</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Exo+2:wght@300;400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Exo+2:wght@300;400;700&family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -287,8 +287,62 @@
         margin-bottom: 20px;
       }
 
-      .time-range input {
+      .time-range select {
         flex: 1;
+        padding: 12px;
+        background-color: #27272a;
+        border: 1px solid #3f3f46;
+        border-radius: 6px;
+        color: #fff;
+        font-family: "Exo 2", sans-serif;
+      }
+
+      .available-slots {
+        margin-bottom: 20px;
+      }
+
+      .available-slots label {
+        display: block;
+        margin-bottom: 8px;
+        color: #e2e8f0;
+        font-weight: 600;
+      }
+
+      .available-slots .slot {
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: #27272a;
+        border: 1px solid #3f3f46;
+        border-radius: 6px;
+        color: #fff;
+        cursor: pointer;
+        margin: 4px;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+      }
+
+      .available-slots .slot.selected {
+        background-color: #3b82f6;
+        border-color: #3b82f6;
+      }
+
+      .confirm-button {
+        width: 100%;
+        padding: 12px 24px;
+        background-color: #3b82f6;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: background-color 0.2s, transform 0.2s;
+      }
+
+      .confirm-button:hover {
+        background-color: #2563eb;
+        transform: translateY(-2px);
       }
 
       /* Popup styles */
@@ -480,6 +534,33 @@
         color: #60a5fa;
       }
 
+      /* Marquee text */
+      .marquee {
+        font-family: "Press Start 2P", cursive;
+        font-size: 18px;
+        color: #3b82f6;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 100%;
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      .marquee span {
+        display: inline-block;
+        padding-left: 100%; /* Start off-screen */
+        animation: marquee 10s linear infinite;
+      }
+
+      @keyframes marquee {
+        0% {
+          transform: translateX(100%); /* Start from the right */
+        }
+        100% {
+          transform: translateX(-100%); /* Move to the left */
+        }
+      }
+
       /* Responsive design */
       @media (max-width: 768px) {
         .hero h1 {
@@ -501,6 +582,10 @@
         .popup {
           width: 95%;
           max-height: 90vh;
+        }
+
+        .marquee {
+          font-size: 14px;
         }
       }
     </style>
@@ -641,7 +726,14 @@
     <!-- Booking Form -->
     <section id="booking" class="booking">
       <h2>Book Your Gaming Session</h2>
-      <button id="explore-games" class="button">
+      <div class="marquee">
+        <span>Explore Games in our PCs</span>
+      </div>
+      <button
+        id="explore-games"
+        class="button"
+        style="color: black; background-color: greenyellow; margin-bottom: 2vh"
+      >
         Explore Games in our PCs and PS5s
       </button>
       <form class="booking-form">
@@ -660,8 +752,40 @@
         <div class="form-group">
           <label>Select Time Range</label>
           <div class="time-range">
-            <input type="time" id="from-time" required />
-            <input type="time" id="to-time" required />
+            <select id="from-time" required>
+              <option value="">From</option>
+              <option value="08:00">8 AM</option>
+              <option value="09:00">9 AM</option>
+              <option value="10:00">10 AM</option>
+              <option value="11:00">11 AM</option>
+              <option value="12:00">12 PM</option>
+              <option value="13:00">1 PM</option>
+              <option value="14:00">2 PM</option>
+              <option value="15:00">3 PM</option>
+              <option value="16:00">4 PM</option>
+              <option value="17:00">5 PM</option>
+              <option value="18:00">6 PM</option>
+              <option value="19:00">7 PM</option>
+              <option value="20:00">8 PM</option>
+              <option value="21:00">9 PM</option>
+            </select>
+            <select id="to-time" required>
+              <option value="">To</option>
+              <option value="08:00">8 AM</option>
+              <option value="09:00">9 AM</option>
+              <option value="10:00">10 AM</option>
+              <option value="11:00">11 AM</option>
+              <option value="12:00">12 PM</option>
+              <option value="13:00">1 PM</option>
+              <option value="14:00">2 PM</option>
+              <option value="15:00">3 PM</option>
+              <option value="16:00">4 PM</option>
+              <option value="17:00">5 PM</option>
+              <option value="18:00">6 PM</option>
+              <option value="19:00">7 PM</option>
+              <option value="20:00">8 PM</option>
+              <option value="21:00">9 PM</option>
+            </select>
           </div>
         </div>
         <div class="form-group">
@@ -677,7 +801,13 @@
             required
           />
         </div>
-        <button type="submit" class="button">Confirm Booking</button>
+        <div class="available-slots">
+          <label>Available Slots</label>
+          <div id="slot-container"></div>
+        </div>
+        <button type="submit" class="confirm-button">
+          Confirm Booking (₹0)
+        </button>
       </form>
     </section>
 
@@ -738,6 +868,7 @@
       </div>
     </section>
 
+    <!-- Contact Section -->
   
 
     <script>
@@ -753,18 +884,141 @@
           const toTime = document.getElementById("to-time").value;
           const name = document.getElementById("name").value;
           const phone = document.getElementById("phone").value;
+          const selectedSlot = document.querySelector(".slot.selected");
 
-          if (!station || !date || !fromTime || !toTime || !name || !phone) {
-            alert("Please fill in all fields");
+          if (
+            !station ||
+            !date ||
+            !fromTime ||
+            !toTime ||
+            !name ||
+            !phone ||
+            !selectedSlot
+          ) {
+            alert("Please fill in all fields and select a slot");
             return;
           }
 
-          // Here you would typically send this data to a server
-          alert(
-            `Booking confirmed!\n\nStation: ${station}\nDate: ${date}\nTime Range: ${fromTime} - ${toTime}\nName: ${name}\nPhone: ${phone}`
-          );
-          this.reset();
+          const price = calculatePrice(station, fromTime, toTime);
+          if (price === 0) {
+            alert("Invalid time range or station selected");
+            return;
+          }
+
+          // Redirect to Razorpay payment gateway
+          initiatePayment(price);
         });
+
+      // Calculate price based on station and time range
+      function calculatePrice(station, fromTime, toTime) {
+        const from = new Date(`1970-01-01T${fromTime}:00`);
+        const to = new Date(`1970-01-01T${toTime}:00`);
+        const duration = (to - from) / (1000 * 60 * 60); // Duration in hours
+
+        if (station === "pc") {
+          const happyHourStart = new Date(`1970-01-01T08:00:00`);
+          const happyHourEnd = new Date(`1970-01-01T16:00:00`);
+
+          let happyHours = 0;
+          let normalHours = 0;
+
+          // Calculate hours in happy hours and normal hours
+          if (from >= happyHourStart && to <= happyHourEnd) {
+            happyHours = duration;
+          } else if (from < happyHourStart && to > happyHourEnd) {
+            happyHours = (happyHourEnd - happyHourStart) / (1000 * 60 * 60);
+            normalHours = duration - happyHours;
+          } else if (from < happyHourStart && to <= happyHourEnd) {
+            happyHours = (to - happyHourStart) / (1000 * 60 * 60);
+            normalHours = (happyHourStart - from) / (1000 * 60 * 60);
+          } else if (from >= happyHourStart && to > happyHourEnd) {
+            happyHours = (happyHourEnd - from) / (1000 * 60 * 60);
+            normalHours = (to - happyHourEnd) / (1000 * 60 * 60);
+          }
+
+          const totalCost = happyHours * 85 + normalHours * 95;
+          return totalCost;
+        } else if (station === "ps5") {
+          if (duration === 1) return 145;
+          if (duration === 2) return 190;
+          if (duration === 3) return 235;
+          if (duration === 4) return 280;
+        }
+        return 0;
+      }
+
+      // Initiate Razorpay payment
+      function initiatePayment(amount) {
+        const options = {
+          key: "YOUR_RAZORPAY_KEY", // Replace with your Razorpay key
+          amount: amount * 100, // Amount in paise
+          currency: "INR",
+          name: "Gaming Center",
+          description: "Booking Payment",
+          handler: function (response) {
+            alert("Payment successful! Booking confirmed.");
+            // Here you would send the booking details to your server
+          },
+          prefill: {
+            name: document.getElementById("name").value,
+            contact: document.getElementById("phone").value,
+          },
+          theme: {
+            color: "#3b82f6",
+          },
+        };
+        const rzp = new Razorpay(options);
+        rzp.open();
+      }
+
+      // Show available slots based on selected station
+      document
+        .getElementById("station")
+        .addEventListener("change", function () {
+          const station = this.value;
+          const slotContainer = document.getElementById("slot-container");
+          slotContainer.innerHTML = "";
+
+          if (station === "pc") {
+            for (let i = 1; i <= 10; i++) {
+              const slot = document.createElement("div");
+              slot.className = "slot";
+              slot.textContent = `PC${i}`;
+              slot.addEventListener("click", function () {
+                document
+                  .querySelectorAll(".slot")
+                  .forEach((s) => s.classList.remove("selected"));
+                this.classList.add("selected");
+                updatePrice();
+              });
+              slotContainer.appendChild(slot);
+            }
+          } else if (station === "ps5") {
+            for (let i = 1; i <= 2; i++) {
+              const slot = document.createElement("div");
+              slot.className = "slot";
+              slot.textContent = `PS5-${i}`;
+              slot.addEventListener("click", function () {
+                document
+                  .querySelectorAll(".slot")
+                  .forEach((s) => s.classList.remove("selected"));
+                this.classList.add("selected");
+                updatePrice();
+              });
+              slotContainer.appendChild(slot);
+            }
+          }
+        });
+
+      // Update price on Confirm Booking button
+      function updatePrice() {
+        const station = document.getElementById("station").value;
+        const fromTime = document.getElementById("from-time").value;
+        const toTime = document.getElementById("to-time").value;
+        const price = calculatePrice(station, fromTime, toTime);
+        const confirmButton = document.querySelector(".confirm-button");
+        confirmButton.textContent = `Confirm Booking (₹${price.toFixed(2)})`;
+      }
 
       // Smooth scroll for anchor links
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -798,5 +1052,6 @@
         overlay.style.display = "none";
       });
     </script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   </body>
 </html>
