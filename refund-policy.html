@@ -3,110 +3,215 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Refund Policy - Gaming Center</title>
+    <title>Refund Policy - ZEGA GAMING</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Exo+2:wght@300;400;700&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #000;
-        color: #fff;
+      /* General Reset */
+      * {
         margin: 0;
         padding: 0;
-        line-height: 1.6;
+        box-sizing: border-box;
       }
-      header {
-        background-color: #18181b;
+
+      body {
+        background-color: #000;
+        color: #fff;
+        line-height: 1.5;
+        font-family: "Exo 2", sans-serif;
+        background-image: radial-gradient(
+            circle at 10% 20%,
+            rgba(59, 130, 246, 0.1) 0%,
+            transparent 20%
+          ),
+          radial-gradient(
+            circle at 90% 80%,
+            rgba(59, 130, 246, 0.1) 0%,
+            transparent 20%
+          );
+        background-attachment: fixed;
         padding: 20px;
-        text-align: center;
-        border-bottom: 1px solid #27272a;
       }
-      header h1 {
-        margin: 0;
-        font-size: 2rem;
-        color: #3b82f6;
-      }
-      main {
-        padding: 20px;
+
+      /* Container */
+      .container {
         max-width: 800px;
         margin: 0 auto;
+        background: rgba(24, 24, 27, 0.8);
+        padding: 30px;
+        border-radius: 12px;
+        border: 1px solid #27272a;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
       }
-      section {
-        margin-bottom: 20px;
-      }
-      h2 {
+
+      /* Headings */
+      h1,
+      h2,
+      h3 {
         color: #3b82f6;
-        font-size: 1.5rem;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
+        font-family: "Orbitron", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
       }
-      p {
-        color: #94a3b8;
-        font-size: 1rem;
-      }
-      .footer {
-        background-color: #18181b;
-        color: #fff;
-        padding: 20px;
+
+      h1 {
+        font-size: 36px;
         text-align: center;
-        border-top: 1px solid #27272a;
-        margin-top: 40px;
+        margin-bottom: 30px;
+        background: linear-gradient(to right, #60a5fa, #2563eb);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
       }
-      .footer-links {
+
+      h2 {
+        font-size: 26px;
+        margin-top: 30px;
+        border-bottom: 2px solid #3b82f6;
+        padding-bottom: 10px;
+      }
+
+      h3 {
+        font-size: 20px;
+        margin-top: 20px;
+      }
+
+      /* Paragraphs */
+      p {
+        margin-bottom: 20px;
+        font-size: 16px;
+        color: #94a3b8;
+      }
+
+      /* Lists */
+      ul {
+        margin-bottom: 20px;
+        padding-left: 20px;
+      }
+
+      ul li {
         margin-bottom: 10px;
+        font-size: 16px;
+        color: #94a3b8;
       }
-      .footer-links a {
+
+      ul li::before {
+        content: "•";
+        color: #3b82f6;
+        margin-right: 10px;
+      }
+
+      /* Links */
+      a {
         color: #3b82f6;
         text-decoration: none;
-        margin: 0 10px;
+        transition: color 0.3s ease;
       }
-      .footer-links a:hover {
-        text-decoration: underline;
+
+      a:hover {
+        color: #60a5fa;
       }
-      .footer p {
-        margin: 0;
-        font-size: 14px;
+
+      /* Contact Section */
+      .contact-info {
+        margin-top: 30px;
+        background: rgba(24, 24, 27, 0.9);
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid #27272a;
+      }
+
+      .contact-info p {
+        margin-bottom: 10px;
+        font-size: 16px;
         color: #94a3b8;
+      }
+
+      .contact-info a {
+        color: #3b82f6;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 28px;
+        }
+
+        h2 {
+          font-size: 24px;
+        }
+
+        h3 {
+          font-size: 18px;
+        }
+
+        p,
+        ul li {
+          font-size: 14px;
+        }
+
+        .container {
+          padding: 20px;
+        }
       }
     </style>
   </head>
   <body>
-    <header>
+    <div class="container">
       <h1>Refund Policy</h1>
-    </header>
-    <main>
-      <section>
-        <h2>1. Refund Eligibility</h2>
+
+      <h2>No Refunds</h2>
+      <p>
+        We regret to inform you that ZEGA GAMING does not offer refunds under any
+        circumstances. Once a payment has been made for our services, it is
+        considered final and non-refundable.
+      </p>
+
+      <h2>Why No Refunds?</h2>
+      <p>
+        At ZEGA GAMING, we strive to provide the best gaming experience possible.
+        Our services, including gaming sessions, tournaments, and monthly passes,
+        are designed to be used immediately upon purchase. Due to the nature of
+        these services, we are unable to process refunds once the service has
+        been accessed or the event has taken place.
+      </p>
+
+      <h2>Exceptions</h2>
+      <p>
+        In rare cases, such as technical issues on our end that prevent you from
+        accessing our services, we may offer compensation in the form of
+        additional gaming time or other benefits. However, this is at the sole
+        discretion of ZEGA GAMING and does not constitute a refund.
+      </p>
+
+      <h2>Contact Us</h2>
+      <p>
+        If you have any questions or concerns about our refund policy, please
+        feel free to contact us. We are here to assist you and ensure you have
+        the best experience with ZEGA GAMING.
+      </p>
+
+      <div class="contact-info">
+        <h2>Contact Information</h2>
+        <p><strong>Name:</strong> ZEGA GAMING</p>
+        <p><strong>Designation:</strong> Proprietor</p>
         <p>
-          Refunds are only available for cancellations made at least 24 hours
-          before the scheduled booking time.
+          <strong>Address:</strong> First Floor, #1204, Aravinda Nethre, 16th
+          Main Rd, Mahadeshwara Nagar, BTM 2nd Stage, BTM Layout, Bengaluru,
+          Karnataka 560076
         </p>
-      </section>
-      <section>
-        <h2>2. How to Request a Refund</h2>
+        <p><strong>Contact:</strong> 9380738842</p>
         <p>
-          To request a refund, please contact us at support@gamingcenter.com
-          with your booking details.
+          <strong>Email:</strong>
+          <a href="mailto:zegagaming.in@gmail.com">zegagaming.in@gmail.com</a>
         </p>
-      </section>
-      <section>
-        <h2>3. Processing Time</h2>
-        <p>
-          Refunds will be processed within 5-7 business days after approval.
-        </p>
-      </section>
-      <section>
-        <h2>4. Non-Refundable Bookings</h2>
-        <p>
-          Bookings canceled less than 24 hours before the scheduled time are
-          non-refundable.
-        </p>
-      </section>
-    </main>
-    <footer class="footer">
-      <div class="footer-links">
-        <a href="terms-and-conditions.html">Terms and Conditions</a>
-        <a href="refund-policy.html">Refund Policy</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
+        <p><strong>Phone:</strong> 7012565615</p>
+        <p><strong>Working Hours:</strong> Monday - Friday (9:00 AM - 6:00 PM)</p>
       </div>
-      <p>&copy; 2023 Gaming Center. All rights reserved.</p>
-    </footer>
+    </div>
   </body>
 </html>
